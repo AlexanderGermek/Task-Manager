@@ -2,14 +2,17 @@
 //  HomeView.swift
 //  TaskManagerSwiftUI
 //
-//  Created by Гермек Александр Георгиевич on 26.04.2022.
+//  Created by Alexander Germek on 26.04.2022.
 //
 
 import SwiftUI
+import Popovers
 
 struct HomeView: View {
 	@StateObject var taskViewModel = TaskViewModel()
 	@Namespace var animation
+	@State private var isNeededShowPopup = false
+	@State private var text = ""
 
 	/// Environments:
 	@Environment(\.managedObjectContext) var context
@@ -36,7 +39,7 @@ struct HomeView: View {
 										.font(.system(size: 15))
 										.fontWeight(.semibold)
 
-									/// EEE is MON, TUE, ...
+									/// EEE is day: MON, TUE, ...
 									Text(taskViewModel.extractDate(date: day, format: "EEE"))
 										.font(.system(size: 14))
 
@@ -100,6 +103,66 @@ struct HomeView: View {
 			NewTask()
 				.environmentObject(taskViewModel)
 		}
+	}
+
+	// MARK: Header
+	func HeaderView() -> some View {
+		VStack(spacing: 10) {
+			Text("Task Manager").font(.largeTitle.bold())
+			
+			HStack(spacing: 10) {
+
+
+				VStack(alignment: .leading, spacing: 10) {
+
+					Text(Date().formatted(date: .abbreviated, time: .omitted))
+						.foregroundColor(.gray)
+					Text("Today").font(.title)
+
+					EditButton()
+				}
+				.hLeading()
+
+				VStack(alignment: .trailing, spacing: 5) {
+
+					/// Profile Button
+					Button {
+						isNeededShowPopup.toggle()
+					} label: {
+						Image("Profile")
+							.resizable()
+							.aspectRatio(contentMode: .fill)
+							.frame(width: 45, height: 45)
+							.clipShape(Circle())
+					}
+					.popover(present: $isNeededShowPopup, attributes: {
+
+						$0.position = .absolute(
+							originAnchor: .bottomRight,
+							popoverAnchor: .right
+								)
+
+					}) {
+
+					 TextField("Enter your name...", text: self.$text)
+							.foregroundColor(.white)
+							.background(.gray)
+							.cornerRadius(10)
+							.padding()
+							.padding(.trailing, 22)
+							.multilineTextAlignment(.center)
+					}
+
+					Text(text)
+				}
+				.hTrailing()
+			}.hCenter()
+
+
+		}
+		.padding()
+		.padding(.top, getSafeArea().top)
+		.background(.white)
 	}
 
 	// MARK: Tasks View
@@ -188,22 +251,6 @@ struct HomeView: View {
 				if taskViewModel.isCurrentHour(date: task.taskDate ?? Date()) {
 					/// Team Members:
 					HStack(spacing: 12) {
-
-						//						HStack(spacing: -10) {
-						//							ForEach(["user1","user2","user3"], id: \.self) {
-						//								Image($0)
-						//									.resizable()
-						//									.aspectRatio(contentMode: .fill)
-						//									.frame(width: 45, height: 45)
-						//									.clipShape(Circle())
-						//									.background(
-						//										Circle()
-						//											.stroke(.black, lineWidth: 4)
-						//									)
-						//							}
-						//						}
-						//						.hLeading()
-
 						/// Checkbox Button
 						if !isCompleted {
 
@@ -240,34 +287,7 @@ struct HomeView: View {
 		.hLeading()
 	}
 
-	// MARK: Header
-	func HeaderView() -> some View {
-		HStack(spacing: 10) {
 
-			VStack(alignment: .leading, spacing: 10) {
-
-				Text(Date().formatted(date: .abbreviated, time: .omitted))
-					.foregroundColor(.gray)
-				Text("Today").font(.largeTitle.bold())
-
-			}
-			.hLeading()
-			EditButton()
-			/// Profile Button
-			//			Button {
-			//
-			//			} label: {
-			//				Image("Profile")
-			//					.resizable()
-			//					.aspectRatio(contentMode: .fill)
-			//					.frame(width: 45, height: 45)
-			//					.clipShape(Circle())
-			//			}
-		}
-		.padding()
-		.padding(.top, getSafeArea().top)
-		.background(.white)
-	}
 }
 
 struct HomeView_Previews: PreviewProvider {

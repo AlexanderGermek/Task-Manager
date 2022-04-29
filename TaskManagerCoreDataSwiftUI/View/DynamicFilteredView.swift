@@ -2,7 +2,7 @@
 //  DynamicFilteredView.swift
 //  TaskManagerCoreDataSwiftUI
 //
-//  Created by Гермек Александр Георгиевич on 28.04.2022.
+//  Created by Alexander Germek on 28.04.2022.
 //
 
 import SwiftUI
@@ -45,14 +45,6 @@ struct DynamicFilteredView<Content: View, T>: View where T: NSManagedObject{
 					self.content(object)
 				}
 			}
-		}
-	}
-}
-
-struct DynamicFilteredView_Previews: PreviewProvider {
-	static var previews: some View {
-		DynamicFilteredView(dateToFilter: Date()) { (object: Task) in
-			//TaskCardView(task: object)
 		}
 	}
 }

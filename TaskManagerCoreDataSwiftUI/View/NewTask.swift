@@ -2,7 +2,7 @@
 //  NewTask.swift
 //  TaskManagerCoreDataSwiftUI
 //
-//  Created by Гермек Александр Георгиевич on 28.04.2022.
+//  Created by Alexander Germek on 28.04.2022.
 //
 
 import SwiftUI
