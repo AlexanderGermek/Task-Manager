@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct NewTask: View {
-	/// Dismiss:
-	@Environment(\.dismiss) private var dismiss
 
 	/// Task parameters:
-	@State var taskTitle: String = ""
-	@State var taskDescription: String = ""
-	@State var taskDate: Date = Date()
+	@State private var taskTitle: String = ""
+	@State private var taskDescription: String = ""
+	@State private var taskDate: Date = Date()
 
 	// Environments:
 	/// Core Data Context:
 	@Environment(\.managedObjectContext) var context
-	/// Task Model
+	/// Task Model:
 	@EnvironmentObject var taskViewModel: TaskViewModel
+	/// Dismiss:
+	@Environment(\.dismiss) private var dismiss
 
 	var body: some View {
 		NavigationView {
@@ -61,10 +61,11 @@ struct NewTask: View {
 					Button("Save") {
 
 						if let task = taskViewModel.editTask {
+							/// Редактируемая задача:
 							task.taskTitle = taskTitle
 							task.taskDescription = taskDescription
 						} else {
-							/// Save to core data:
+							/// Новая задача:
 							let task = Task(context: context)
 							task.taskTitle = taskTitle
 							task.taskDescription = taskDescription
@@ -84,10 +85,9 @@ struct NewTask: View {
 				}
 			}
 			.onAppear {
-				if let task = taskViewModel.editTask {
+				guard let task = taskViewModel.editTask  else { return }
 				taskTitle = task.taskTitle ?? ""
 				taskDescription = task.taskDescription ?? ""
-				}
 			}
 		}
 	}

@@ -46,7 +46,7 @@ struct HomeView: View {
 										.font(.system(size: 15))
 										.fontWeight(.semibold)
 
-									/// EEE is day: MON, TUE, ...
+									/// EEE - отображает день в виде Пн Вт Ср
 									Text(taskViewModel.extractDate(date: day, format: "EEE"))
 										.font(.system(size: 14))
 
@@ -55,10 +55,8 @@ struct HomeView: View {
 										.frame(width: 8, height: 8)
 										.opacity(isToday ? 1: 0)
 								}
-								// MARK: Foreground Style
 								.foregroundStyle(isToday ? .primary : .secondary)
 								.foregroundColor(isToday ? .white : .black)
-								// MARK: Capsule Shape
 								.frame(width: width, height: 90)
 								.background(
 
@@ -75,7 +73,7 @@ struct HomeView: View {
 								.contentShape(Capsule())
 								.onTapGesture {
 									// Update Current Day
-									withAnimation {
+									withAnimation() {
 										taskViewModel.currentDate = day
 									}
 								}
@@ -115,16 +113,19 @@ struct HomeView: View {
 	// MARK: Header
 	func HeaderView() -> some View {
 		VStack(spacing: 10) {
-			Text("Task Manager").font(.largeTitle.bold())
+			Text("Task Manager").font(.title.bold())
 			
 			HStack(spacing: 10) {
 
 
 				VStack(alignment: .leading, spacing: 10) {
 
-					Text(Date().formatted(date: .abbreviated, time: .omitted))
+					Text(Date()
+						.formatted(date: .abbreviated, time: .omitted))
 						.foregroundColor(.gray)
-					Text("Today").font(.title)
+
+					Text("Today")
+						.font(.title)
 
 					EditButton()
 				}
@@ -161,6 +162,7 @@ struct HomeView: View {
 					}
 
 					Text(text)
+						.font(.title2.bold())
 				}
 				.hTrailing()
 			}.hCenter()
