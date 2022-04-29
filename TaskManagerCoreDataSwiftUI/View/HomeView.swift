@@ -9,14 +9,18 @@ import SwiftUI
 import Popovers
 
 struct HomeView: View {
-	@StateObject var taskViewModel = TaskViewModel()
-	@Namespace var animation
+
+	/// States:
+	@StateObject private var taskViewModel = TaskViewModel()
 	@State private var isNeededShowPopup = false
 	@State private var text = ""
 
+	/// Namespaces:
+	@Namespace private var animation
+
 	/// Environments:
-	@Environment(\.managedObjectContext) var context
-	@Environment(\.editMode) var editButton
+	@Environment(\.managedObjectContext) private var context
+	@Environment(\.editMode) private var editButton
 
 	var body: some View {
 		ScrollView(.vertical, showsIndicators: false) {
@@ -25,14 +29,17 @@ struct HomeView: View {
 			LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]) {
 
 				Section {
-					// MARK: Lazy Stack With Pinned Header
 
 					ScrollView(.horizontal, showsIndicators: false) {
 
 						HStack(spacing: 10) {
+
 							let width = (UIScreen.main.bounds.width - 8*10)/7
+
 							ForEach(taskViewModel.currentWeek, id: \.self) { day in
 
+								let isToday = taskViewModel.isToday(date: day)
+								/// Ячейка отдельного дня:
 								VStack(spacing: 10) {
 
 									Text(taskViewModel.extractDate(date: day, format: "dd"))
@@ -46,18 +53,18 @@ struct HomeView: View {
 									Circle()
 										.fill(.white)
 										.frame(width: 8, height: 8)
-										.opacity(taskViewModel.isToday(date: day) ? 1: 0)
+										.opacity(isToday ? 1: 0)
 								}
 								// MARK: Foreground Style
-								.foregroundStyle(taskViewModel.isToday(date: day) ? .primary : .secondary)
-								.foregroundColor(taskViewModel.isToday(date: day) ? .white : .black)
+								.foregroundStyle(isToday ? .primary : .secondary)
+								.foregroundColor(isToday ? .white : .black)
 								// MARK: Capsule Shape
 								.frame(width: width, height: 90)
 								.background(
 
 									ZStack {
 										// MARK: Matched Geometry Effect
-										if taskViewModel.isToday(date: day) {
+										if isToday {
 											Capsule()
 												.fill(.black)
 												.matchedGeometryEffect(id: "CURRENTDAY", in: animation)
@@ -293,34 +300,5 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
 	static var previews: some View {
 		HomeView()
-	}
-}
-
-
-// MARK: UI Design Helper functions
-extension View {
-	func hLeading() -> some View {
-		self
-			.frame(maxWidth: .infinity, alignment: .leading)
-	}
-
-	func hTrailing() -> some View {
-		self
-			.frame(maxWidth: .infinity, alignment: .trailing)
-	}
-
-	func hCenter() -> some View {
-		self
-			.frame(maxWidth: .infinity, alignment: .center)
-	}
-
-	// MARK: Safe Area
-	func getSafeArea() -> UIEdgeInsets {
-		guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-			  let safeAreaInsets = screen.windows.first?.safeAreaInsets else {
-				  return .zero
-			  }
-
-		return safeAreaInsets
 	}
 }

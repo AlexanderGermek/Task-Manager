@@ -36,11 +36,14 @@ struct DynamicFilteredView<Content: View, T>: View where T: NSManagedObject{
 		Group {
 
 			if request.isEmpty {
+
 				Text("Tasks not found")
 					.font(.system(size: 16))
 					.fontWeight(.light)
 					.offset(y: 100)
+
 			} else {
+
 				ForEach(request, id: \.objectID) { object in
 					self.content(object)
 				}

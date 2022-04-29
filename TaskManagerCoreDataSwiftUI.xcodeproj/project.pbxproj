@@ -17,6 +17,7 @@
 		4C6CD30B281977620015018F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6CD30A281977620015018F /* Preview Assets.xcassets */; };
 		4C6CD30D281977620015018F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CD30C281977620015018F /* Persistence.swift */; };
 		4C6CD310281977620015018F /* TaskManagerCoreDataSwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CD30E281977620015018F /* TaskManagerCoreDataSwiftUI.xcdatamodeld */; };
+		4C8185A1281C043F00411C6D /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8185A0281C043F00411C6D /* Extensions+UIView.swift */; };
 		E026F5C48370C5E95AE869D4 /* Pods_TaskManagerCoreDataSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604828115B213EE8DC50FEEB /* Pods_TaskManagerCoreDataSwiftUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		4C6CD30A281977620015018F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4C6CD30C281977620015018F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4C6CD30F281977620015018F /* TaskManagerCoreDataSwiftUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskManagerCoreDataSwiftUI.xcdatamodel; sourceTree = "<group>"; };
+		4C8185A0281C043F00411C6D /* Extensions+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		604828115B213EE8DC50FEEB /* Pods_TaskManagerCoreDataSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskManagerCoreDataSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC4BF09D817673EF5C0746F /* Pods-TaskManagerCoreDataSwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskManagerCoreDataSwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-TaskManagerCoreDataSwiftUI/Pods-TaskManagerCoreDataSwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +130,7 @@
 			children = (
 				4C6CD307281977620015018F /* Assets.xcassets */,
 				4C6CD30C281977620015018F /* Persistence.swift */,
+				4C8185A0281C043F00411C6D /* Extensions+UIView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C6CD30D281977620015018F /* Persistence.swift in Sources */,
+				4C8185A1281C043F00411C6D /* Extensions+UIView.swift in Sources */,
 				4C6CD306281977600015018F /* ContentView.swift in Sources */,
 				4C6CD304281977600015018F /* TaskManagerCoreDataSwiftUIApp.swift in Sources */,
 				4C2F7008281A9E1B0036A1D4 /* NewTask.swift in Sources */,
