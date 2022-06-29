@@ -1,10 +1,10 @@
 # Task-Manager
 
-1 | 2 | 3
+1 Main Page | 2 Tasks | 3 Editing
 --- | --- | ---
-<img src="https://user-images.githubusercontent.com/76963888/165951216-f1075f66-99c8-48f1-8f29-4d22c67210d9.png" width="250" height="640">|<img src="https://user-images.githubusercontent.com/76963888/165951365-cb8a1799-cb94-404e-ada0-d2180e8cb41a.png" width="250" height="640">|<img src="https://user-images.githubusercontent.com/76963888/165953502-01f4da64-a314-40bd-b7bc-896ff3954001.png" width="250" height="640">
+<img width="344" alt="image" src="https://user-images.githubusercontent.com/76963888/176514272-9fc290cc-4ae5-4b79-b869-6949bcdf89f3.png">|<img width="346" alt="image" src="https://user-images.githubusercontent.com/76963888/176514622-5285f97a-b218-43b1-8d8e-a6b7071b066e.png">|<img width="344" alt="image" src="https://user-images.githubusercontent.com/76963888/176514824-77bf993e-134b-4899-a5fc-f765d0e3b948.png">
 
 
-4 | 5 | 6
+4 New Task | 5 Empty Task Day | 6 Tasks
 --- | --- | ---
-<img src="https://user-images.githubusercontent.com/76963888/165951434-8f09bf9e-1c19-49ed-af04-a3067202322e.png" width="250" height="640">|<img src="https://user-images.githubusercontent.com/76963888/165953549-6159eb1b-09b8-4306-995c-3a40288e5686.png" width="250" height="640">|<img src="https://user-images.githubusercontent.com/76963888/165953606-445d6383-552e-4926-8a94-f8f806fcce7c.png" width="250" height="640">
+<img width="344" alt="image" src="https://user-images.githubusercontent.com/76963888/176515051-41f5bba7-4bc9-4c49-b919-63e811d0ab17.png">|<img width="343" alt="image" src="https://user-images.githubusercontent.com/76963888/176515251-170cc953-e197-4b92-8d2f-dc7fb42a43d1.png">|<img width="345" alt="image" src="https://user-images.githubusercontent.com/76963888/176515403-53022af1-0cfd-49bd-b7c0-ecd75e1b9589.png">
